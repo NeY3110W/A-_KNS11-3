@@ -16,5 +16,10 @@ namespace A_star_KNS11._3
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
