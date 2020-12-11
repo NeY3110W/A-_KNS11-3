@@ -1,4 +1,4 @@
-﻿-namespace A_star_KNS11._3
+﻿namespace A_star_KNS11._3
 {
     partial class Form1
     {
@@ -32,8 +32,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
