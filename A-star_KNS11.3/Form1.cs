@@ -19,7 +19,34 @@ namespace A_star_KNS11._3
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            
+        }
 
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                dataGridView1.CurrentCell.Style.BackColor = Color.Black;
+                ourGrid.cells[dataGridView1.CurrentCell.ColumnIndex, dataGridView1.CurrentCell.RowIndex].isWalkable = false;
+            }
+        }
+
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if(!checkBox1.Checked)
+            {
+                dataGridView1.CurrentCell.Style.BackColor = Color.Green;
+                ourGrid.cells[dataGridView1.CurrentCell.ColumnIndex, dataGridView1.CurrentCell.RowIndex].isStart = true;
+            }
+        }
+
+        private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (!checkBox1.Checked)
+            {
+                dataGridView1.CurrentCell.Style.BackColor = Color.Red;
+                ourGrid.cells[dataGridView1.CurrentCell.ColumnIndex, dataGridView1.CurrentCell.RowIndex].isFinish = true;
+            }
         }
     }
 }
