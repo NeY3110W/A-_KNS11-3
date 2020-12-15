@@ -162,6 +162,8 @@
 
         #endregion
         Grid ourGrid = new Grid();
+        bool checkedStart = true;
+        bool checkedFinish = true;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox checkBox1;
