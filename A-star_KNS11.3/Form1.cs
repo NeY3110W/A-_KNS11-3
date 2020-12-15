@@ -53,6 +53,16 @@ namespace A_star_KNS11._3
         private void button1_Click(object sender, EventArgs e)
         {
             ourGrid.SearchPath();
+            for(int i = 0; i < ourGrid.cells.GetLength(0); i++)
+            {
+                for(int j = 0; j < ourGrid.cells.GetLength(1); j++)
+                {
+                    if(ourGrid.cells[i,j].isPath == true)
+                    {
+                        dataGridView1[i, j].Style.BackColor = Color.Yellow;
+                    }
+                }
+            }
         }
     }
 }

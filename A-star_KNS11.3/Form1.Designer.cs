@@ -104,6 +104,10 @@
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
             this.Column6.Width = 35;
+            //
+            // adding rows
+            //
+            this.dataGridView1.Rows.AddCopies(0, 5);
             // 
             // button1
             // 
