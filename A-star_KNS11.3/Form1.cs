@@ -48,5 +48,10 @@ namespace A_star_KNS11._3
                 ourGrid.cells[dataGridView1.CurrentCell.ColumnIndex, dataGridView1.CurrentCell.RowIndex].isFinish = true;
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ourGrid.SearchPath();
+        }
     }
 }
