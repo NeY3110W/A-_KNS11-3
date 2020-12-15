@@ -16,7 +16,7 @@ namespace A_star_KNS11._3
         public bool isFinish = false;
         public int weight = 0;
         public int G=0;
-        public int F;
+        public int F=Int32.MaxValue;
         public int prevrow;
         public int prevcolumn;
         public int H = Int32.MaxValue;

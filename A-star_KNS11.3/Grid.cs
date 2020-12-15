@@ -57,16 +57,31 @@ namespace A_star_KNS11._3
                 }
             }
 
-            Queue<Cell> queue= new Queue<Cell>();
-            queue.Enqueue(cells[starti,startj]);
+            List<Cell> open= new List<Cell>();
+            open.Add(cells[starti, startj]);
             Cell startcell;
-            while (true)//Работаем с соседями
+            List<Cell> close = new List<Cell>();
+            int it = 0;
+
+            while (!open.Contains(cells[endi,endj]))//Работаем с соседями
             {
+                int min = Int32.MaxValue;
                 
-                startcell=queue.Dequeue();
+                for(int i=0;i<open.Count;i++)
+                {
+                    if(min<open[i].F)
+                    {
+                        min = open[i].F;
+                        it = i;
+                    }
+                }
+
+                close.Add(open[it]);
+                startcell = open[it];
+                open.RemoveAt(it);
                 
-                Checked[startcell.column, startcell.row] = true;//Синие соседи(сосед у которого уже искали соседей)
-                
+
+                //Checked[startcell.column, startcell.row] = true;//Синие соседи(сосед у которого уже искали соседей)
                 for (int i = 0; i < cells.GetLength(0); i++)
                 {
                     for (int j = 0; j < cells.GetLength(1); j++)
@@ -74,7 +89,7 @@ namespace A_star_KNS11._3
 
                         if (//Ищем ближайшего соседа
                             (
-                                (startcell.column - 1 == i && startcell.row - 1 == j)|| 
+                                (startcell.column - 1 == i && startcell.row - 1 == j) ||
                                 (startcell.column - 1 == i && startcell.row == j) ||
                                 (startcell.column - 1 == i && startcell.row + 1 == j) ||
                                 (startcell.column == i && startcell.row + 1 == j) ||
@@ -82,44 +97,74 @@ namespace A_star_KNS11._3
                                 (startcell.column + 1 == i && startcell.row == j) ||
                                 (startcell.column + 1 == i && startcell.row - 1 == j) ||
                                 (startcell.column == i && startcell.row - 1 == j)
-                            )&& 
-                            Neighbors[i,j]==false&& 
-                            cells[i,j].isWalkable)
+                                ) && !close.Contains(cells[i,j])
+                                &&cells[i,j].isWalkable)
                         {
-                            cells[i, j].prevcolumn = startcell.column;
-                            cells[i, j].prevrow = startcell.row;//Делаем стрелку на предыдущего
+                            if (!open.Contains(cells[i, j]))
 
-                            if (cells[i,j].isFinish)//Мб вы уже в конце?
-                            {
-                                //break;
-                                goto point;
-                            }
-                            Neighbors[i, j] = true;//зелёные соседи
+                            { 
+                                open.Add(cells[i, j]);
 
-                            if (//По диагонали или по вртикалям, добавляем 10 или 14
-                                (cells[i, j].row - 1 == cells[i, j].prevrow && cells[i, j].column == cells[i, j].prevcolumn) ||
-                                (cells[i, j].row == cells[i, j].prevrow && cells[i, j].column + 1 == cells[i, j].prevcolumn) ||
-                                (cells[i, j].row + 1 == cells[i, j].prevrow && cells[i, j].column == cells[i, j].prevcolumn) ||
-                                (cells[i, j].row == cells[i, j].prevrow && cells[i, j].column - 1 == cells[i, j].prevcolumn)
-                                )
-                            {
-                                cells[i, j].G = cells[cells[i, j].prevcolumn, cells[i, j].prevrow].G += 10;
-                            }
-                            else
-                            {
-                                cells[i, j].G = cells[cells[i, j].prevcolumn, cells[i, j].prevrow].G += 14;
+                                cells[i, j].prevcolumn = startcell.column;
+                                cells[i, j].prevrow = startcell.row;//Делаем стрелку на предыдущего
+
+                                
+                                // Neighbors[i, j] = true;//зелёные соседи
+
+                                if (//По диагонали или по вртикалям, добавляем 10 или 14
+                                    (cells[i, j].row - 1 == cells[i, j].prevrow && cells[i, j].column == cells[i, j].prevcolumn) ||
+                                    (cells[i, j].row == cells[i, j].prevrow && cells[i, j].column + 1 == cells[i, j].prevcolumn) ||
+                                    (cells[i, j].row + 1 == cells[i, j].prevrow && cells[i, j].column == cells[i, j].prevcolumn) ||
+                                    (cells[i, j].row == cells[i, j].prevrow && cells[i, j].column - 1 == cells[i, j].prevcolumn)
+                                    )
+                                {
+                                    cells[i, j].G = cells[cells[i, j].prevcolumn, cells[i, j].prevrow].G += 10;
+                                }
+                                else
+                                {
+                                    cells[i, j].G = cells[cells[i, j].prevcolumn, cells[i, j].prevrow].G += 14;
+                                }
+
+                                cells[i, j].F = (Math.Abs(cells[i, j].column - endi) 
+                                               + Math.Abs(cells[i, j].row - endj)) * 10;//Считаем сколько до конца
+                                cells[i, j].H = cells[i, j].G + cells[i, j].F;//Сумма
                             }
 
-                            cells[i, j].F = (Math.Abs(cells[i, j].column - endi) + Math.Abs(cells[i, j].row - endj)) * 10;//Считаем сколько до конца
-                            cells[i, j].H = cells[i, j].G + cells[i, j].F;//Сумма
                             
-                            if(cells[i,j].H<startcell.H)
-                                queue.Enqueue(cells[i, j]);//Если сумма этого соседа больше, то зачем у него искать соседей
+                            if(cells[i, j].G<startcell.G)
+                            {
+                                cells[i, j].prevcolumn = startcell.column;
+                                cells[i, j].prevrow = startcell.row;//Делаем стрелку на предыдущего
+
+                                if (//По диагонали или по вртикалям, добавляем 10 или 14
+                                    (cells[i, j].row - 1 == cells[i, j].prevrow && cells[i, j].column == cells[i, j].prevcolumn) ||
+                                    (cells[i, j].row == cells[i, j].prevrow && cells[i, j].column + 1 == cells[i, j].prevcolumn) ||
+                                    (cells[i, j].row + 1 == cells[i, j].prevrow && cells[i, j].column == cells[i, j].prevcolumn) ||
+                                    (cells[i, j].row == cells[i, j].prevrow && cells[i, j].column - 1 == cells[i, j].prevcolumn)
+                                    )
+                                {
+                                    cells[i, j].G = cells[cells[i, j].prevcolumn, cells[i, j].prevrow].G += 10;
+                                }
+                                else
+                                {
+                                    cells[i, j].G = cells[cells[i, j].prevcolumn, cells[i, j].prevrow].G += 14;
+                                }
+
+                                cells[i, j].F = (Math.Abs(cells[i, j].column - endi)
+                                               + Math.Abs(cells[i, j].row - endj)) * 10;//Считаем сколько до конца
+                                cells[i, j].H = cells[i, j].G + cells[i, j].F;//Сумма
+                            }
+
+                            /*if(open.Contains(cells[endi,endj]))
+                            {
+                                goto point;
+                            }*/
+
                         }
                     }
                 }
             }
-            point:
+            //point:
             {
                 int tempprevi = cells[endi, endj].prevcolumn;//Обратный поиск путя
                 int tempprevj = cells[endi, endj].prevrow;
