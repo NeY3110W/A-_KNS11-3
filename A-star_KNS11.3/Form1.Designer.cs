@@ -52,13 +52,12 @@
             this.Column4,
             this.Column5,
             this.Column6});
-            this.dataGridView1.Location = new System.Drawing.Point(24, 64);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView1.Location = new System.Drawing.Point(18, 52);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 35;
             this.dataGridView1.RowTemplate.Height = 35;
-            this.dataGridView1.Size = new System.Drawing.Size(280, 245);
+            this.dataGridView1.Size = new System.Drawing.Size(210, 199);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
@@ -112,46 +111,44 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(24, 344);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Location = new System.Drawing.Point(18, 280);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 28);
+            this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
             this.button1.Text = "Calculate";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(24, 24);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBox1.Location = new System.Drawing.Point(18, 20);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(85, 21);
+            this.checkBox1.Size = new System.Drawing.Size(68, 17);
             this.checkBox1.TabIndex = 2;
             this.checkBox1.Text = "Put walls";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(208, 344);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button2.Location = new System.Drawing.Point(156, 280);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 28);
+            this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 3;
             this.button2.Text = "Clear";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(332, 403);
+            this.ClientSize = new System.Drawing.Size(249, 327);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
