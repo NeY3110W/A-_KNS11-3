@@ -62,6 +62,9 @@ namespace A_star_KNS11._3
                     if(ourGrid.cells[i,j].isPath == true)
                     {
                         dataGridView1[i, j].Style.BackColor = Color.Yellow;
+                        valueString = Convert.ToString(ourGrid.cells[i, j].H) + "(" + Convert.ToString(ourGrid.cells[i, j].F) + "," + Convert.ToString(ourGrid.cells[i, j].G) + ")";
+                        dataGridView1[i, j].Value = valueString;
+                        
                     }
                 }
             }
