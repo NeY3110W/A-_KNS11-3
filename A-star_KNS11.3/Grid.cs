@@ -118,11 +118,11 @@ namespace A_star_KNS11._3
                                     (cells[i, j].row == cells[i, j].prevrow && cells[i, j].column - 1 == cells[i, j].prevcolumn)
                                     )
                                 {
-                                    cells[i, j].G = cells[cells[i, j].prevcolumn, cells[i, j].prevrow].G += 10;
+                                    cells[i, j].G = cells[cells[i, j].prevcolumn, cells[i, j].prevrow].G + 10;
                                 }
                                 else
                                 {
-                                    cells[i, j].G = cells[cells[i, j].prevcolumn, cells[i, j].prevrow].G += 14;
+                                    cells[i, j].G = cells[cells[i, j].prevcolumn, cells[i, j].prevrow].G + 14;
                                 }
 
                                 cells[i, j].F = (Math.Abs(cells[i, j].column - endi) 
@@ -143,11 +143,11 @@ namespace A_star_KNS11._3
                                     (cells[i, j].row == cells[i, j].prevrow && cells[i, j].column - 1 == cells[i, j].prevcolumn)
                                     )
                                 {
-                                    cells[i, j].G = cells[cells[i, j].prevcolumn, cells[i, j].prevrow].G += 10;
+                                    cells[i, j].G = cells[cells[i, j].prevcolumn, cells[i, j].prevrow].G + 10;
                                 }
                                 else
                                 {
-                                    cells[i, j].G = cells[cells[i, j].prevcolumn, cells[i, j].prevrow].G += 14;
+                                    cells[i, j].G = cells[cells[i, j].prevcolumn, cells[i, j].prevrow].G + 14;
                                 }
 
                                 cells[i, j].F = (Math.Abs(cells[i, j].column - endi)
