@@ -33,38 +33,26 @@ namespace A_star_KNS11._3
 
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            bool countStart = false;
-            if(!checkBox1.Checked && !countStart)
+            if(!checkBox1.Checked)
             {
                 dataGridView1.CurrentCell.Style.BackColor = Color.Green;
                 ourGrid.cells[dataGridView1.CurrentCell.ColumnIndex, dataGridView1.CurrentCell.RowIndex].isStart = true;
-                countStart = true;
             }
         }
 
         private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            bool countFinish = false;
-            if (!checkBox1.Checked && !countFinish)
+            if (!checkBox1.Checked)
             {
                 dataGridView1.CurrentCell.Style.BackColor = Color.Red;
                 ourGrid.cells[dataGridView1.CurrentCell.ColumnIndex, dataGridView1.CurrentCell.RowIndex].isFinish = true;
-                countFinish = true;
+                ourGrid.cells[dataGridView1.CurrentCell.ColumnIndex, dataGridView1.CurrentCell.RowIndex].isStart = false;
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < ourGrid.cells.GetLength(0); i++)
-            {
-                for (int j = 0; j < ourGrid.cells.GetLength(1); j++)
-                {
-                    if (ourGrid.cells[i, j].isPath == true)
-                    {
-                        dataGridView1[i, j].Style.BackColor = Color.Yellow;
-                    }
-                }
-            }
+            ourGrid.SearchPath();
         }
     }
 }
