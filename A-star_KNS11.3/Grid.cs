@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace A_star_KNS11._3
 {
@@ -59,9 +60,11 @@ namespace A_star_KNS11._3
             Queue<Cell> queue= new Queue<Cell>();
             queue.Enqueue(cells[starti,startj]);
             Cell startcell;
-            while (queue.Count!=0)//Работаем с соседями
+            while (true)//Работаем с соседями
             {
+                
                 startcell=queue.Dequeue();
+                
                 Checked[startcell.column, startcell.row] = true;//Синие соседи(сосед у которого уже искали соседей)
                 
                 for (int i = 0; i < cells.GetLength(0); i++)
@@ -81,14 +84,15 @@ namespace A_star_KNS11._3
                                 (startcell.column == i && startcell.row - 1 == j)
                             )&& 
                             Neighbors[i,j]==false&& 
-                            !cells[i,j].isWalkable)
+                            cells[i,j].isWalkable)
                         {
                             cells[i, j].prevcolumn = startcell.column;
                             cells[i, j].prevrow = startcell.row;//Делаем стрелку на предыдущего
 
                             if (cells[i,j].isFinish)//Мб вы уже в конце?
                             {
-                                break;
+                                //break;
+                                goto point;
                             }
                             Neighbors[i, j] = true;//зелёные соседи
 
@@ -115,7 +119,7 @@ namespace A_star_KNS11._3
                     }
                 }
             }
-
+            point:
             {
                 int tempprevi = cells[endi, endj].prevcolumn;//Обратный поиск путя
                 int tempprevj = cells[endi, endj].prevrow;

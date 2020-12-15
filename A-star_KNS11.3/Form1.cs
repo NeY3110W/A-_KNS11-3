@@ -46,6 +46,7 @@ namespace A_star_KNS11._3
             {
                 dataGridView1.CurrentCell.Style.BackColor = Color.Red;
                 ourGrid.cells[dataGridView1.CurrentCell.ColumnIndex, dataGridView1.CurrentCell.RowIndex].isFinish = true;
+                ourGrid.cells[dataGridView1.CurrentCell.ColumnIndex, dataGridView1.CurrentCell.RowIndex].isStart = false;
             }
         }
 

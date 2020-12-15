@@ -19,7 +19,7 @@ namespace A_star_KNS11._3
         public int F;
         public int prevrow;
         public int prevcolumn;
-        public int H = 0;
+        public int H = Int32.MaxValue;
         public bool isPath = false;
     }
 }
