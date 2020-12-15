@@ -34,7 +34,7 @@ namespace A_star_KNS11._3
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             bool checkedStart = true;
-            if(!checkBox1.Checked && checkedStart)
+            if(!checkBox1.Checked && checkedStart == true)
             {
                 dataGridView1.CurrentCell.Style.BackColor = Color.Green;
                 ourGrid.cells[dataGridView1.CurrentCell.ColumnIndex, dataGridView1.CurrentCell.RowIndex].isStart = true;
@@ -45,7 +45,7 @@ namespace A_star_KNS11._3
         private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             bool checkedFinish = true;
-            if (!checkBox1.Checked && checkedFinish)
+            if (!checkBox1.Checked && checkedFinish == true)
             {
                 dataGridView1.CurrentCell.Style.BackColor = Color.Red;
                 ourGrid.cells[dataGridView1.CurrentCell.ColumnIndex, dataGridView1.CurrentCell.RowIndex].isFinish = true;
