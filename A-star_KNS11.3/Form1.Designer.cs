@@ -105,10 +105,6 @@
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
             this.Column6.Width = 35;
-            //
-            // adding more rows
-            //
-            this.dataGridView1.Rows.AddCopies(0, 5);
             // 
             // button1
             // 
@@ -119,6 +115,7 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "Calculate";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // checkBox1
             // 
