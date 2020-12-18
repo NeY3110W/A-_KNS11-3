@@ -69,5 +69,26 @@ namespace A_star_KNS11._3
                 }
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            checkedStart = true;
+            checkedFinish = true;
+            for (int i = 0; i < ourGrid.cells.GetLength(0); i++)
+            {
+                for (int j = 0; j < ourGrid.cells.GetLength(1); j++)
+                {
+                    ourGrid.cells[i, j].isFinish = false;
+                    ourGrid.cells[i, j].isStart = false;
+                    ourGrid.cells[i, j].isPath = false;
+                    ourGrid.cells[i, j].isWalkable = false;
+                    ourGrid.cells[i, j].H = 0;
+                    ourGrid.cells[i, j].F = 0;
+                    ourGrid.cells[i, j].G = 0;
+                    dataGridView1[i, j].Style.BackColor = Color.White;
+                    dataGridView1[i, j].Value = "";
+                }
+            }
+        }
     }
 }
